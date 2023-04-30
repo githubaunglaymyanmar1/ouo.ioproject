@@ -1,0 +1,26 @@
+apt install dante-server -y &> /dev/null
+rm -rf /etc/danted.conf
+cat > /etc/danted.conf <<EOF
+#/etc/danted.conf
+
+internal: 127.0.0.1 port = 8128
+external: eth0
+
+socksmethod: none
+
+user.unprivileged: nobody
+user.privileged: root
+
+client pass {
+from: 0.0.0.0/0 to: 0.0.0.0/0
+log: error
+}
+
+socks pass {
+from: 0.0.0.0/0 to: 0.0.0.0/0
+command: connect
+log: error
+socksmethod: none
+}
+EOF
+service danted restart &> /dev/null
