@@ -5,6 +5,15 @@ entr software
 https://superuser.com/questions/181517/how-to-execute-a-command-whenever-a-file-changes
 ls *.test | entr -r bash run
 
+-----------------------------------------------------------------
+
+local port to internet with ssh
+
+# Add GatewayPorts support
+GatewayPorts yes   ( you need add this one line onely )
+
+ssh -R 8383:localhost:80 connect@aungmyozaw.duckdns.org -N
+------------------------------------------------
 
 
 
